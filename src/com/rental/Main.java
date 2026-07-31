@@ -75,16 +75,24 @@ public class Main {
     // ---------- 1. Add Vehicle ----------
 
     private static void addVehicle() {
-        System.out.println("\nSelect vehicle type:");
-        System.out.println("1. Car");
-        System.out.println("2. Motorcycle");
-        System.out.println("3. Van");
-        System.out.print("Choice: ");
-        String typeChoice = scanner.nextLine().trim();
+        char typeChoice = '0';
+        boolean isTypeValid = false;
 
-        if (!typeChoice.equals("1") && !typeChoice.equals("2") && !typeChoice.equals("3")) {
-            System.out.println("Invalid vehicle type.");
-            return;
+        while (!isTypeValid) {
+            System.out.println("\nSelect vehicle type:");
+            System.out.println("1. Car");
+            System.out.println("2. Motorcycle");
+            System.out.println("3. Van");
+            System.out.print("Choice: ");
+
+            String input = scanner.nextLine().trim();
+
+            if (input.length() == 1 && "123".contains(input)) {
+                typeChoice = input.charAt(0);
+                isTypeValid = true;
+            } else {
+                System.out.println("Invalid vehicle type. Please enter 1, 2, or 3.");
+            }
         }
 
         try {
@@ -99,12 +107,12 @@ public class Main {
 
             Vehicle vehicle;
             switch (typeChoice) {
-                case "1": {
+                case '1': {
                     int seats = readPositiveInt("Enter Number of Seats: ");
                     vehicle = new Car(plateNumber, model, baseRate, true, seats);
                     break;
                 }
-                case "2": {
+                case '2': {
                     int cc = readPositiveInt("Enter Engine Displacement (cc): ");
                     vehicle = new Motorcycle(plateNumber, model, baseRate, true, cc);
                     break;
