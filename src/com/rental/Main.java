@@ -15,22 +15,43 @@ public class Main {
     public static void main(String[] args) {
         boolean running = true;
         while (running) {
-            printMenu();
-            String choice = scanner.nextLine().trim();
+            char choice = '0';
+
+            boolean isChoiceValid = false;
+
+            while (!isChoiceValid) {
+                printMenu();
+
+                if (!scanner.hasNextLine()) {
+                    System.out.println("\nInput stream closed. Exiting...");
+                    running = false;
+                    return;
+                }
+
+                String input = scanner.nextLine().trim();
+
+                if (input.length() == 1 && "12345".contains(input)) {
+                    choice = input.charAt(0);
+                    isChoiceValid = true;
+                } else {
+                    System.out.println("Invalid choice. Please enter 1, 2, 3, or 4.");
+                }
+            }
+
             switch (choice) {
-                case "1":
+                case '1':
                     addVehicle();
                     break;
-                case "2":
+                case '2':
                     viewAllVehicles();
                     break;
-                case "3":
+                case '3':
                     rentVehicle();
                     break;
-                case "4":
+                case '4':
                     returnVehicle();
                     break;
-                case "5":
+                case '5':
                     running = false;
                     System.out.println("Goodbye!");
                     break;
