@@ -1,8 +1,11 @@
+package com.rental;
+
 public class Motorcycle extends Vehicle {
 
     private int engineDisplacementCc;
 
-    public Motorcycle(String plateNumber, String model, double baseRatePerDay, boolean available, int engineDisplacementCc) {
+    public Motorcycle(String plateNumber, String model, double baseRatePerDay,
+                       boolean available, int engineDisplacementCc) {
         super(plateNumber, model, baseRatePerDay, available);
         setEngineDisplacementCc(engineDisplacementCc);
     }

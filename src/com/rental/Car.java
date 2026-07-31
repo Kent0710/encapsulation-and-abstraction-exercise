@@ -1,3 +1,5 @@
+package com.rental;
+
 public class Car extends Vehicle {
 
     private int numberOfSeats;
@@ -15,7 +17,6 @@ public class Car extends Vehicle {
         if (numberOfSeats <= 0) {
             throw new IllegalArgumentException("Number of seats must be greater than 0.");
         } 
-        // TODO: Add greater than 10 validation check for numberOfSeats
         this.numberOfSeats = numberOfSeats;
     }
 

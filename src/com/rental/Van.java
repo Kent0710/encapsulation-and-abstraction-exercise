@@ -1,3 +1,5 @@
+package com.rental;
+
 public class Van extends Vehicle {
 
     private static final double DRIVER_FEE = 500.0;

@@ -1,3 +1,5 @@
+package com.rental;
+
 /**
  * Abstract base class representing a generic rentable vehicle.
  *
@@ -90,4 +92,17 @@ public abstract class Vehicle {
      * (used in the formatted table display).
      */
     public abstract String getExtraDetail();
+
+    /**
+     * Formatted row for the "View All Vehicles" table.
+     */
+    public String toTableRow() {
+        return String.format("%-10s %-10s %-18s %10.2f  %-12s %-20s",
+                plateNumber,
+                getVehicleType(),
+                model,
+                baseRatePerDay,
+                (available ? "Available" : "Rented"),
+                getExtraDetail());
+    }
 }
